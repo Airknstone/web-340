@@ -1,0 +1,46 @@
+<!-- 
+Title: trejo-assignment 2.4.ejs
+Author: Professor Krasso
+Date: 01 13 2022
+Modified By: Allan Trejo
+Description: EJS views for ejs-view assignment 
+Attribution: Trying out Tailwind css  https://tailwindcss.com
+ -->
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div class="container mx-auto ">
+        <nav class="text-2xl text-black">
+            <ul class="flex flex-row justify-evenly">
+                <li><a href="#">home</a> </li>
+                <li><a href="#">about</a></li>
+                <li><a href="#">contact</a></li>
+            </ul>
+        </nav>
+        <div
+            class=" h-screen shadow-lg bg-[url('https://cdn.vox-cdn.com/thumbor/rVsnzUxMfUqSNJib7ib4kDPBPMg=/54x0:971x480/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/9422101/bladerunner.0.0.0.jpg')] bg-no-repeat bg-cover">
+            <div class="text-4xl text-black   pl-6 pt-20">
+                <div class=" text-2xl  drop-shadow-lg ">
+                    <span class="bg-slate-200 p-3">Welcome,</span>
+                </div>
+                <div class=" hover:text-blue-600">
+                    <div class="font-bold mt-7">
+                        <span class="bg-slate-200 p-3"><%=firstName%> <%=lastName%></span>
+                    </div>
+                    <div class="font-bold  mt-5">
+                        <span class="bg-slate-200 p-3 ">to <%=address%></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
