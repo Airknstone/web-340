@@ -1,3 +1,9 @@
+/* Title: trejo-assignment-3.2.js
+Author: Professor Krasso
+Date: 01 21 2022
+Modified By: Allan Trejo
+Description: Express Server with morgan logger, serves EJS templates
+ */
 var express = require('express');
 var http = require('http');
 var path = require('path');
