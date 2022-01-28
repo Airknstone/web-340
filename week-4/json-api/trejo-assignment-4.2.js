@@ -3,6 +3,7 @@ Author: Professor Krasso
 Date: 01 28 2022
 Modified By: Allan Trejo
 Description: Express server response with JSON
+The fundamentals of an Express API are pretty straightforward: take a request, parse it, and respond with a JSON object and an HTTP status code (Hahn, 2016). 
  */
 const { response } = require('express');
 var express = require('express');
