@@ -1,0 +1,40 @@
+//- /* Title: Index.pug
+//- Author: Professor Krasso
+//- Date: 02-03-2022
+//- Modified By: Allan Trejo
+//- Description:  PugJS Templating with Express
+//- Attributions Bulma Css https://bulma.io
+//- */
+
+doctype html doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet",  href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css")
+    body
+        .container
+            nav.navbar 
+                .navbar-brand
+                    a.navbar-item(href="https://bulma.io") 
+                        img(src="https://bulma.io/images/bulma-logo.png" width="112" height="28")
+                .navbar-menu
+                    .navbar-end 
+                        a.navbar-item Home
+                        a.navbar-item Home
+                        a.navbar-item Home
+                        a.navbar-item Home
+            .column.is-two-thirds.m-auto
+                .card.mt-6
+                    .card-content.has-text-grey
+                        h1.is-size-1 Welcome To Pug
+                        time.datetime='February 3 2022' 
+                    .has-text-centered.mb-5.has-text-info=message
+                    footer.card-footer.mt-6
+                        a.card-footer-item &#x1F914;
+                        a.card-footer-item &#x1F920;
+                        a.card-footer-item &#x1F4AD;
+                
+            
