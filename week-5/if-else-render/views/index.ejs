@@ -1,0 +1,37 @@
+<!-- 
+Title: trejo-assignment 5.2.ejs index.ejs
+Author: Professor Krasso
+Date: 02-03-2022
+Modified By: Allan Trejo
+Description: Conditional Rendering using EJS
+Attribution: Bulma css framework https://bulma.io
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="columns mt-6">
+        <div class="column is-half is-offset-one-quarter ">
+            <h2 class="block is-size-1">Names</h2>
+            <!-- IF names array is not empty Output Array -->
+            <% if(names.length> 0){names.forEach((name)=>{%>
+
+                <div class="button is-primary">
+                    <%= name %>
+                </div>
+
+                <% }) %>
+                    <!-- END IF -->
+        </div>
+    </div>
+</body>
+
+</html>
