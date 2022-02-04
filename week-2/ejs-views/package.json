@@ -1,9 +1,10 @@
 {
-    "name": "ejs-views",
-    "author": "Professor Krasso",
-    "private": true,
-    "dependencies": {
-        "ejs": "^3.1.6",
-        "express": "^4.17.2"
-    }
+  "name": "ejs-views",
+  "author": "Professor Krasso",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  }
 }

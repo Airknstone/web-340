@@ -2,6 +2,7 @@
   "name": "status-codes",
   "author": "Professor Krasso",
   "private": true,
+  "version": "0.0.1",
   "dependencies": {
     "express": "^4.17.2"
   }
