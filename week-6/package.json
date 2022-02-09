@@ -1,0 +1,9 @@
+{
+  "name": "ems",
+  "author": "Professor Krasso",
+  "private": true,
+  "version": "0.0.1",
+  "dependencies": {
+    "mongoose": "^6.2.1"
+  }
+}
