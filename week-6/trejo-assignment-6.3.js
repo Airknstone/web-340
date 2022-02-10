@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 
 // Store database connection as a string
 var mongoDB =
-  'mongodb+srv://admin:11223344@ems.a7w7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+  'mongodb+srv://admin:<password></password>@ems.a7w7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
 //   Connect to Url
 mongoose.connect(mongoDB);
