@@ -28,10 +28,10 @@ db.once('open', function () {
   console.log('Application connected to MongoDB Atlas Cluster');
 });
 var app = express();
-var emp = new Employee({
-  name: 'Rick',
-});
-console.log(emp);
+/* var emp = new Employee({
+  firstName: 'Rick',
+}); 
+console.log(emp) */
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
