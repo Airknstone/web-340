@@ -9,21 +9,21 @@ Attribution: Bulma css framework https://bulma.io
 <%- include ("header") %>
     <div class="container is-fluid">
         <%- include ('navbar') %>
+            <%= message %>
+                <section class="hero is-fullheight "
+                    style="background-image: url('https://images.unsplash.com/photo-1576836165612-8bc9b07e7778?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');background-repeat: no-repeat; background-size: cover;">
 
-            <section class="hero is-fullheight "
-                style="background-image: url('https://images.unsplash.com/photo-1576836165612-8bc9b07e7778?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80');background-repeat: no-repeat; background-size: cover;">
+                    <div class="hero-body">
+                        <div class="container has-text-left">
+                            <p class="title is-1 has-text-primary">
+                                EMS
+                            </p>
+                            <p class="subtitle has-text-primary is-family-code">
+                                Fastest Query Machine <br>on the Planet
+                            </p>
+                        </div>
 
-                <div class="hero-body">
-                    <div class="container has-text-left">
-                        <p class="title is-1 has-text-primary">
-                            EMS
-                        </p>
-                        <p class="subtitle has-text-primary is-family-code">
-                            Fastest Query Machine <br>on the Planet
-                        </p>
                     </div>
-
-                </div>
 
     </div>
     </section>
@@ -53,10 +53,10 @@ Attribution: Bulma css framework https://bulma.io
             </div>
         </div>
     </div>
+    <%- include ("list") %>
 
 
+        <%- include ("footer") %>
 
-    <%- include ("footer") %>
-
-        </div>
-        <%- include ("scripts") %>
+            </div>
+            <%- include ("scripts") %>

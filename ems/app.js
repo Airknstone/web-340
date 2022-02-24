@@ -4,6 +4,7 @@ const http = require('http');
 const logger = require('morgan');
 const mongoose = require('mongoose');
 const Employee = require('./models/employee.js');
+const helmet = require('helmet');
 
 // Store database connection as a string
 const mongoDB =
@@ -27,11 +28,19 @@ db.on('error', console.error.bind(console, 'MongoDB connected error: '));
 db.once('open', function () {
   console.log('Application connected to MongoDB Atlas Cluster');
 });
+
+/* Initalize Express */
 var app = express();
-/* var emp = new Employee({
+
+app.use(logger('short'));
+app.use(helmet.xssFilter());
+
+var emp = new Employee({
   firstName: 'Rick',
-}); 
-console.log(emp) */
+  lastName: 'Deckard',
+});
+
+console.log(emp);
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -40,6 +49,8 @@ app.use(logger('short'));
 app.get('/', function (req, res) {
   res.render('index', {
     title: 'Home Page',
+    emp: emp,
+    message: 'XSS Prevention Example',
   });
 });
 
