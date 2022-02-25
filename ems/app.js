@@ -58,17 +58,7 @@ app.use(function (request, response, next) {
   response.locals.csrfToken = token;
   next();
 });
-app.post('/process', function (request, response) {
-  console.log(request.body.txtName);
-  response.redirect('/');
-});
 
-var emp = new Employee({
-  firstName: 'Rick',
-  lastName: 'Deckard',
-});
-
-console.log(emp);
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -77,16 +67,50 @@ app.use(logger('short'));
 app.get('/', function (req, res) {
   res.render('index', {
     title: 'Home Page',
-    emp: emp,
     message: 'New Fruit ENtry Page',
   });
 });
 app.get('/new', function (req, res) {
   res.render('new', {
-    title: 'Home Page',
-    emp: emp,
-    message: 'New Fruit ENtry Page',
+    title: 'New Entry Page',
+    message: 'New Entry',
   });
+});
+
+app.get('/list', function (req, res) {
+  Employee.find({}, function (err, emp) {
+    if (err) {
+      console.log(err);
+      throw err;
+    } else {
+      console.log(emp);
+      res.render('list', {
+        title: 'List of Employees',
+        employees: emp,
+      });
+    }
+  });
+});
+
+app.post('/process', function (req, res) {
+  console.log(req.body);
+  if (!req.body.txtFirstName || !req.body.txtLastName) {
+    res.status(400).send('Entries must have a First Name and a Last Name');
+    return;
+  }
+  var empFirstName = req.body.txtFirstName;
+  var empLastName = req.body.txtLastName;
+  console.log(empFirstName, empLastName);
+  var emp = new Employee({
+    firstName: empFirstName,
+    lastName: empLastName,
+  });
+
+  emp.save(function (error) {
+    if (error) throw error;
+    console.log(empFirstName, empLastName + ' Saved Successfully!');
+  });
+  res.redirect('/');
 });
 
 http.createServer(app).listen(3000, function () {
