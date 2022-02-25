@@ -18,8 +18,6 @@ const mongoDB =
 
 //   Connect to Url
 mongoose.connect(mongoDB);
-//   Connect to Url
-mongoose.connect(mongoDB);
 
 // wait for return response
 mongoose.Promise = global.Promise;
@@ -30,7 +28,7 @@ var db = mongoose.connection;
 // On Error event
 db.on('error', console.error.bind(console, 'MongoDB connected error: '));
 
-// once opened / sucessful
+// once opened / sucsessful
 db.once('open', function () {
   console.log('Application connected to MongoDB Atlas Cluster');
 });
@@ -38,19 +36,29 @@ db.once('open', function () {
 /************** 
 END DATABASE CONNECTIONS 
 ***********************************/
+/* Initialize CSRF First*/
 var csrfProtection = csrf({ cookie: true });
 
 /* Initalize Express */
 var app = express();
 
+/*************************
+ *   BEGIN Middleware
+ *****************************/
+/* Morgan logger */
 app.use(logger('short'));
+/* helmet, helps prevent xss */
 app.use(helmet.xssFilter());
+/* parse response object body */
 app.use(
   bodyParser.urlencoded({
     extended: true,
   })
 );
+app.use(logger('short'));
+/* Parse Cookie header and populate req.cookies with an object keyed by the cookie names. */
 app.use(cookieParser());
+/* CSRF cookie */
 app.use(csrfProtection);
 app.use(function (request, response, next) {
   var token = request.csrfToken();
@@ -59,11 +67,16 @@ app.use(function (request, response, next) {
   next();
 });
 
+/*************************
+ *   END  Middleware
+ *****************************/
+/* Mount directory and template engine */
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('short'));
-
+/*************************
+ *   BEGIN Routes
+ *****************************/
 app.get('/', function (req, res) {
   res.render('index', {
     title: 'Home Page',
@@ -77,6 +90,7 @@ app.get('/new', function (req, res) {
   });
 });
 
+/* If database contains emplyee schema, Populate  */
 app.get('/list', function (req, res) {
   Employee.find({}, function (err, emp) {
     if (err) {
@@ -92,6 +106,7 @@ app.get('/list', function (req, res) {
   });
 });
 
+/* Form Submission handler */
 app.post('/process', function (req, res) {
   console.log(req.body);
   if (!req.body.txtFirstName || !req.body.txtLastName) {
@@ -112,7 +127,11 @@ app.post('/process', function (req, res) {
   });
   res.redirect('/');
 });
+/*************************
+ *   END  Routes
+ *****************************/
 
+/* Create server */
 http.createServer(app).listen(3000, function () {
   console.log('App started on port 3000');
 });
