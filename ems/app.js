@@ -80,7 +80,6 @@ app.set('view engine', 'ejs');
 app.get('/', function (req, res) {
   res.render('index', {
     title: 'Home Page',
-    message: 'New Fruit ENtry Page',
   });
 });
 app.get('/new', function (req, res) {
