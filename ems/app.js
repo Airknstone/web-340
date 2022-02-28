@@ -16,7 +16,7 @@ BEGIN DATABASE CON1NECTIONS
 const mongoDB =
   'mongodb+srv://admin:11223344@ems.a7w7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
-//   Connect to Url
+//   Connect to url
 mongoose.connect(mongoDB);
 
 // wait for return response
