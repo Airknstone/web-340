@@ -1,3 +1,11 @@
+/*
+ Title: app.js
+ Author: Professor Krasso
+ Date: 02/12/2022
+ Modified By: Allan Trejo
+ Description: CRUD employee tracking system
+ Mongo and express
+*/
 const express = require('express');
 const path = require('path');
 const http = require('http');
