@@ -16,13 +16,14 @@ const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const csrf = require('csurf');
+const { response } = require('express');
+require('dotenv').config();
 
 /************* 1
 BEGIN DATABASE CON1NECTIONS 
 ***********************************/
 // Store database connection as a string
-const mongoDB =
-  'mongodb+srv://admin:11223344@ems.a7w7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const mongoDB = `mongodb+srv://${process.env.SECRET_KEY}@ems.a7w7c.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 //   Connect to url
 mongoose.connect(mongoDB);
@@ -53,6 +54,7 @@ var app = express();
 /*************************
  *   BEGIN Middleware
  *****************************/
+
 /* Morgan logger */
 app.use(logger('short'));
 /* helmet, helps prevent xss */
@@ -81,7 +83,7 @@ app.use(function (request, response, next) {
 /* Mount directory and template engine */
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+app.set('port', process.env.PORT || 8080);
 /*************************
  *   BEGIN Routes
  *****************************/
@@ -97,7 +99,7 @@ app.get('/new', function (req, res) {
   });
 });
 
-/* If database contains emplyee schema, Populate  */
+/* If database contains emplyee schema, Populate cccfffvvvvvvvvvvvvvv  vvvvv */
 app.get('/list', function (req, res) {
   Employee.find({}, function (err, emp) {
     if (err) {
@@ -134,11 +136,28 @@ app.post('/process', function (req, res) {
   });
   res.redirect('/');
 });
+
+app.get('/view/:queryName', function (req, res) {
+  var queryName = req.params.queryName;
+  Employee.find({ firstName: queryName }, function (error, emp) {
+    if (error) throw error;
+    console.log(emp);
+    if (emp.length > 0) {
+      res.render('view', {
+        title: 'Fruit Record',
+        employee: emp,
+      });
+    } else {
+      response.redirect('/list');
+    }
+  });
+});
+
 /*************************
  *   END  Routes
  *****************************/
 
 /* Create server */
-http.createServer(app).listen(3000, function () {
-  console.log('App started on port 3000');
+http.createServer(app).listen(app.get('port'), function () {
+  console.log('Application started on port ' + app.get('port'));
 });

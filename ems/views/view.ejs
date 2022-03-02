@@ -7,4 +7,59 @@ Description: Small application using EJS
 Attribution: Bulma css framework https://bulma.io
  -->
 
-<p>Read-only page with the selected employee’s details</p>
+
+
+
+
+<%- include ("header") %>
+    <div class="container is-fluid">
+        <%- include ('navbar') %>
+            <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                    <li><a href="/">
+                            EMS Home
+                        </a></li>
+
+                    <li class="is-active"><a href="#" aria-current="page">
+                            <%= title %>
+                        </a></li>
+                </ul>
+            </nav>
+
+            <div class="is-size-4 mt-6 ">-- Employee --</div>
+            <br><br>
+            <div class="columns">
+                <div class="card column is-one-quarter">
+                    <div class=" card-image">
+                        <figure class="image is-4by3">
+                            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                                <label for="txtName">Name:</label>
+                                <p class="title is-4">
+                                    <%= employee[0].firstName %>
+                                </p>
+                                <p class="subtitle is-6">
+                                    <%= employee[0].lastName %>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+    </div>
+
+
+    <%- include ("scripts") %>
+        <%- include ("footer") %>

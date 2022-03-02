@@ -33,6 +33,7 @@ Attribution: Bulma css framework https://bulma.io
 
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Functions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,9 @@ Attribution: Bulma css framework https://bulma.io
                                 </td>
                                 <td>
                                     <%= entry.lastName %>
+                                </td>
+                                <td>
+                                    <a href="/view/<%= entry.firstName %>">View</a>
                                 </td>
                             </tr>
                     </tbody>
