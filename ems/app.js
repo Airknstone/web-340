@@ -99,7 +99,7 @@ app.get('/new', function (req, res) {
   });
 });
 
-/* If database contains emplyee schema, Populate cccfffvvvvvvvvvvvvvv  vvvvv */
+/* If database contains emplyee schema, Populate  */
 app.get('/list', function (req, res) {
   Employee.find({}, function (err, emp) {
     if (err) {
